@@ -84,7 +84,7 @@
                             <h2 align=center>Formulir Pemesanan</h2><br><br>
 
 
-                            <form class="cuciselimut" action="{{url('save')}}" method="post">
+                            <form class="cuciselimut" action="{{route('post-cuciselimut')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <?php if (isset($error)) : ?>

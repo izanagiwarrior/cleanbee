@@ -74,7 +74,7 @@
                         <div class="col-12 col-md-15"> <br><br><br>
                             <h2 align=center>Formulir Pemesanan</h2><br><br>
 
-                            <form class="cucisepatu" action="{{url('save')}}" method="post">
+                            <form class="cucisepatu" action="{{route('post-cucisepatu')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <?php if (isset($error)) : ?>
