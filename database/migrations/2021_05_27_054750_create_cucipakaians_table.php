@@ -19,6 +19,8 @@ class CreateCucipakaiansTable extends Migration
             $table->string('nohp');
             $table->text('alamat');
             $table->text('catatan');
+            $table->string('status')->nullable();
+            $table->integer('rating')->nullable();
             $table->timestamps();
         });
     }

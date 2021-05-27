@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin2')
 
 @section('main-content')
 <!-- Page Heading -->
@@ -35,11 +35,19 @@
             </td>
             @elseif(is_null($cp -> status))
             <td>
-                <p href="" class="btn btn-success">No Status</p>
+                <form action="{{ route('trackingSelimut') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $cp->id }}" name="id">
+                    <button class="btn btn-success">{{"No Status"}}</button>
+                </form>
             </td>
             @else
             <td>
-                <p href="" class="btn btn-success">{{$cp -> status}}</p>
+                <form action="{{ route('trackingSelimut') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $cp->id }}" name="id">
+                    <button class="btn btn-success">{{$cp -> status}}</button>
+                </form>
             </td>
             @endif
             <td><a href="" class="btn btn-primary">score</a></td>
@@ -78,11 +86,19 @@
             </td>
             @elseif(is_null($cp -> status))
             <td>
-                <p href="" class="btn btn-success">No Status</p>
+                <form action="{{ route('trackingSepatu') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $cp->id }}" name="id">
+                    <button class="btn btn-success">{{"No Status"}}</button>
+                </form>
             </td>
             @else
             <td>
-                <p href="" class="btn btn-success">{{$cp -> status}}</p>
+                <form action="{{ route('trackingSepatu') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $cp->id }}" name="id">
+                    <button class="btn btn-success">{{$cp -> status}}</button>
+                </form>
             </td>
             @endif
             <td><a href="" class="btn btn-primary">score</a></td>
@@ -121,11 +137,19 @@
             </td>
             @elseif(is_null($cp -> status))
             <td>
-                <p href="" class="btn btn-success">No Status</p>
+                <form action="{{ route('trackingPakaian') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $cp->id }}" name="id">
+                    <button class="btn btn-success">{{"No Status"}}</button>
+                </form>
             </td>
             @else
             <td>
-                <p href="" class="btn btn-success">{{$cp -> status}}</p>
+                <form action="{{ route('trackingPakaian') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $cp->id }}" name="id">
+                    <button class="btn btn-success">{{$cp -> status}}</button>
+                </form>
             </td>
             @endif
             <td><a href="" class="btn btn-primary">score</a></td>

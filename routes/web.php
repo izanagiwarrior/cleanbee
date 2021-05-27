@@ -5,6 +5,7 @@ use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 use App\Models\cucipakaian;
 use App\Models\cuciselimut;
 use App\Models\cucisepatu;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
@@ -49,6 +51,7 @@ Route::get('/orderlist', function () {
     return view('orderlist',compact('cucisepatu','cuciselimut','cucipakaian'));
 })->name('orderlist');
 
+
 Route::get('/help', function () {
     return view('help');
 })->name('help');
@@ -67,3 +70,24 @@ Route::post('/cucipakaian-form', [App\Http\Controllers\CucipakaianController::cl
 Route::get('cucisepatu-form', 'CucisepatuController@index');
 Route::post('/cucisepatu-form', [App\Http\Controllers\CucisepatuController::class, 'store'])->name('post-cucisepatu');
 // Route::post('save3', 'CucisepatuController@store');
+
+
+// ADMIN
+Auth::routes();
+
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
+Route::get('/orderlistAdmin', function () {
+    $cucisepatu = cucisepatu::all();
+    $cuciselimut = cuciselimut::all();
+    $cucipakaian = cucipakaian::all();
+
+    return view('adminOrderList',compact('cucisepatu','cuciselimut','cucipakaian'));
+})->name('orderlistAdmin')->middleware('is_admin');
+
+
+Route::post('orderlistAdminPakaian', [App\Http\Controllers\HomeController::class, 'status_processPakaian'])->name('trackingPakaian')->middleware('is_admin');
+Route::post('orderlistAdminSelimut', [App\Http\Controllers\HomeController::class, 'status_processSelimut'])->name('trackingSelimut')->middleware('is_admin');
+Route::post('orderlistAdminSepatu', [App\Http\Controllers\HomeController::class, 'status_processSepatu'])->name('trackingSepatu')->middleware('is_admin');
+
+

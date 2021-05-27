@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>User</title>
 
     <!-- Fonts -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -110,6 +110,14 @@
             <a class="nav-link" href="{{ route('help') }}">
                 <i class="fas fa-fw fa-question-circle"></i>
                 <span>{{ __('Help') }}</span>
+            </a>
+        </li>
+
+        <!-- Nav Item -->
+        <li class="nav-item {{ Nav::isRoute('help') }}">
+            <a class="nav-link" href="{{ url('admin/home') }}">
+                <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                <span>{{ __('Admin') }}</span>
             </a>
         </li>
 
