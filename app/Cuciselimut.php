@@ -9,7 +9,7 @@ class Cuciselimut extends Model
 
     
     protected $fillable = [
-        'nname', 'nohp', 'alamat', 'catatan','status','rating',
+        'user_id','nname', 'nohp', 'alamat', 'catatan','status','rating',
     ];
 
     

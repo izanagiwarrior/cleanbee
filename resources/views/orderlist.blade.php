@@ -23,6 +23,7 @@
         $i = 0;
         ?>
         @foreach($cuciselimut as $cp)
+        @if($cp -> user_id ===  Auth::user()->id)
         <tr>
             <th scope="row">{{$i+=1}}</th>
             <td>{{$cp -> nname}}</td>
@@ -44,6 +45,7 @@
             @endif
             <td><a href="" class="btn btn-primary">score</a></td>
         </tr>
+        @endif
         @endforeach
     </tbody>
 </table>
@@ -66,6 +68,7 @@
         $i = 0;
         ?>
         @foreach($cucisepatu as $cp)
+        @if($cp -> user_id ===  Auth::user()->id)
         <tr>
             <th scope="row">{{$i+=1}}</th>
             <td>{{$cp -> nname}}</td>
@@ -87,6 +90,7 @@
             @endif
             <td><a href="" class="btn btn-primary">score</a></td>
         </tr>
+        @endif
         @endforeach
     </tbody>
 </table>
@@ -109,6 +113,7 @@
         $i = 0;
         ?>
         @foreach($cucipakaian as $cp)
+        @if($cp -> user_id ===  Auth::user()->id)
         <tr>
             <th scope="row">{{$i+=1}}</th>
             <td>{{$cp -> nname}}</td>
@@ -130,6 +135,7 @@
             @endif
             <td><a href="" class="btn btn-primary">score</a></td>
         </tr>
+        @endif
         @endforeach
     </tbody>
 </table>

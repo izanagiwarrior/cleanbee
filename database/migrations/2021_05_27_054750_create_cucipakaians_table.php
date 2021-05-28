@@ -15,6 +15,7 @@ class CreateCucipakaiansTable extends Migration
     {
         Schema::create('cucipakaians', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
             $table->string('nname');
             $table->string('nohp');
             $table->text('alamat');

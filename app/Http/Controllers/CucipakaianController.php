@@ -15,6 +15,7 @@ class CucipakaianController extends Controller
 
     public function store(Request $request){
         $data = request()->validate([
+            'user_id'=>'required',
             'nname'=>'required',
             'nohp'=>'required',
             'alamat'=>'required',
