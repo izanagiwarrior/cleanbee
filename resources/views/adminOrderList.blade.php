@@ -14,7 +14,7 @@
             <th scope="col">No Telpon</th>
             <th scope="col">Alamat</th>
             <th scope="col">Catatan</th>
-            <th scope="col">Tracking</th>
+            <th scope="col" style="width: 20%;">Tracking</th>
             <th scope="col">Give Rating</th>
         </tr>
     </thead>
@@ -65,7 +65,7 @@
             <th scope="col">No Telpon</th>
             <th scope="col">Alamat</th>
             <th scope="col">Catatan</th>
-            <th scope="col">Tracking</th>
+            <th scope="col" style="width: 20%;">Tracking</th>
             <th scope="col">Give Rating</th>
         </tr>
     </thead>
@@ -85,7 +85,7 @@
                 <p href="" class="btn btn-secondary">Finished</p>
             </td>
             @elseif(is_null($cp -> status))
-            <td>
+            <td colspan="2">
                 <form action="{{ route('trackingSepatu') }}" method="post">
                     @csrf
                     <input type="hidden" value="{{ $cp->id }}" name="id">
@@ -116,7 +116,7 @@
             <th scope="col">No Telpon</th>
             <th scope="col">Alamat</th>
             <th scope="col">Catatan</th>
-            <th scope="col">Tracking</th>
+            <th scope="col" style="width: 20%;">Tracking</th>
             <th scope="col">Give Rating</th>
         </tr>
     </thead>
@@ -140,7 +140,7 @@
                 <form action="{{ route('trackingPakaian') }}" method="post">
                     @csrf
                     <input type="hidden" value="{{ $cp->id }}" name="id">
-                    <button class="btn btn-success">{{"No Status"}}</button>
+                    <button class="btn btn-success" style="width: fit-content;">{{"No Status"}}</button>
                 </form>
             </td>
             @else
@@ -157,7 +157,6 @@
         @endforeach
     </tbody>
 </table>
-
 <!-- End of Main Content -->
 @endsection
 
