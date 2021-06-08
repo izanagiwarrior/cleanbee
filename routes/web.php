@@ -6,6 +6,8 @@ use App\Models\cucipakaian;
 use App\Models\cuciselimut;
 use App\Models\cucisepatu;
 use App\Http\Controllers\HomeController;
+use App\Models\Feedback;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +50,50 @@ Route::get('/orderlist', function () {
     $cuciselimut = cuciselimut::all();
     $cucipakaian = cucipakaian::all();
 
-    return view('orderlist',compact('cucisepatu','cuciselimut','cucipakaian'));
+    return view('orderlist', compact('cucisepatu', 'cuciselimut', 'cucipakaian'));
 })->name('orderlist');
 
+
+Route::get('/rating', function (Request $request) {
+    $type = $request->type;
+    $id = $request->id;
+    if ($type === 'cuciselimut') {
+        $data = cuciselimut::find($request->id);
+        return view('rating', compact('data', 'type', 'id'));
+    } elseif ($type === 'cucissepatu') {
+        $data = cuciselimut::find($request->id);
+        return view('rating', compact('data', 'type', 'id'));
+    } elseif ($type === 'cucipakaian') {
+        $data = cuciselimut::find($request->id);
+        return view('rating', compact('data', 'type', 'id'));
+    }
+})->name('rating');
+
+Route::post('/rating', function (Request $request) {
+    $type = $request->type;
+    if ($type === 'cuciselimut') {
+        $data = cuciselimut::find($request->id);
+        $data->rating = $request->rating;
+        $data->save();
+    } elseif ($type === 'cucissepatu') {
+        $data = cuciselimut::find($request->id);
+        $data->rating = $request->rating;
+        $data->save();
+    } elseif ($type === 'cucipakaian') {
+        $data = cuciselimut::find($request->id);
+        $data->rating = $request->rating;
+        $data->save();
+    }
+    return redirect(route('orderlist'));
+})->name('rating_process');
+
+Route::post('/orderList', function (Request $request) {
+    $feedback = new Feedback();
+    $feedback->name = $request->name;
+    $feedback->feedback = $request->feedback;
+    $feedback->save();
+    return redirect(route('orderlist'));
+})->name('feedback_process');
 
 Route::get('/help', function () {
     return view('help');
@@ -82,12 +125,16 @@ Route::get('/orderlistAdmin', function () {
     $cuciselimut = cuciselimut::all();
     $cucipakaian = cucipakaian::all();
 
-    return view('adminOrderList',compact('cucisepatu','cuciselimut','cucipakaian'));
+    return view('adminOrderList', compact('cucisepatu', 'cuciselimut', 'cucipakaian'));
 })->name('orderlistAdmin')->middleware('is_admin');
+
+Route::get('/list_feedback', function () {
+    $feedback = Feedback::all();
+
+    return view('list_feedback', compact('feedback'));
+})->name('list_feedback')->middleware('is_admin');
 
 
 Route::post('orderlistAdminPakaian', [App\Http\Controllers\HomeController::class, 'status_processPakaian'])->name('trackingPakaian')->middleware('is_admin');
 Route::post('orderlistAdminSelimut', [App\Http\Controllers\HomeController::class, 'status_processSelimut'])->name('trackingSelimut')->middleware('is_admin');
 Route::post('orderlistAdminSepatu', [App\Http\Controllers\HomeController::class, 'status_processSepatu'])->name('trackingSepatu')->middleware('is_admin');
-
-

@@ -15,7 +15,7 @@
             <th scope="col">Alamat</th>
             <th scope="col">Catatan</th>
             <th scope="col" style="width: 20%;">Tracking</th>
-            <th scope="col">Give Rating</th>
+            <th scope="col">User Rate</th>
         </tr>
     </thead>
     <tbody>
@@ -50,7 +50,15 @@
                 </form>
             </td>
             @endif
-            <td><a href="" class="btn btn-primary">score</a></td>
+            @if(empty($cp->rating))
+            <td>
+                <p href="" class="">Not Rated</p>
+            </td>
+            @else
+            <td>
+                <p href="" class="">{{$cp->rating}} of 5</p>
+            </td>
+            @endif
         </tr>
         @endforeach
     </tbody>
@@ -66,7 +74,7 @@
             <th scope="col">Alamat</th>
             <th scope="col">Catatan</th>
             <th scope="col" style="width: 20%;">Tracking</th>
-            <th scope="col">Give Rating</th>
+            <th scope="col">User Rate</th>
         </tr>
     </thead>
     <tbody>
@@ -85,7 +93,7 @@
                 <p href="" class="btn btn-secondary">Finished</p>
             </td>
             @elseif(is_null($cp -> status))
-            <td colspan="2">
+            <td>
                 <form action="{{ route('trackingSepatu') }}" method="post">
                     @csrf
                     <input type="hidden" value="{{ $cp->id }}" name="id">
@@ -101,7 +109,15 @@
                 </form>
             </td>
             @endif
-            <td><a href="" class="btn btn-primary">score</a></td>
+            @if(empty($cp->rating))
+            <td>
+                <p href="" class="">Not Rated</p>
+            </td>
+            @else
+            <td>
+                <p href="" class="">{{$cp->rating}} of 5</p>
+            </td>
+            @endif
         </tr>
         @endforeach
     </tbody>
@@ -117,7 +133,7 @@
             <th scope="col">Alamat</th>
             <th scope="col">Catatan</th>
             <th scope="col" style="width: 20%;">Tracking</th>
-            <th scope="col">Give Rating</th>
+            <th scope="col">User Rate</th>
         </tr>
     </thead>
     <tbody>
@@ -152,7 +168,15 @@
                 </form>
             </td>
             @endif
-            <td><a href="" class="btn btn-primary">score</a></td>
+            @if(empty($cp->rating))
+            <td>
+                <p href="" class="">Not Rated</p>
+            </td>
+            @else
+            <td>
+                <p href="" class="">{{$cp->rating}} of 5</p>
+            </td>
+            @endif
         </tr>
         @endforeach
     </tbody>

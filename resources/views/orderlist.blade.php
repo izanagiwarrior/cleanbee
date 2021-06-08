@@ -36,16 +36,35 @@
                 <td>
                     <p href="" class="btn btn-secondary">Finished</p>
                 </td>
+                @if(empty($cp->rating))
+                <td>
+                    <form action="{{ route('rating') }}" method="get">
+                        @csrf
+                        <input type="hidden" value="{{ $cp->id }}" name="id">
+                        <input type="hidden" value="{{ 'cuciselimut' }}" name="type">
+                        <button class="btn btn-primary">Rate</button>
+                    </form>
+                </td>
+                @else
+                <td>
+                    <p href="" class="btn btn-secondary">Done</p>
+                </td>
+                @endif
                 @elseif(is_null($cp -> status))
                 <td>
                     <p href="" class="btn btn-success">No Status</p>
                 </td>
+                <td>
+                    <p href="" class="btn btn-secondary">Rate</p>
+                </td>
                 @else
                 <td>
                     <p href="" class="btn btn-success">{{$cp -> status}}</p>
+                <td>
+                    <p href="" class="btn btn-secondary">Rate</p>
+                </td>
                 </td>
                 @endif
-                <td><a href="" class="btn btn-primary">score</a></td>
             </tr>
             @endif
             @endforeach
@@ -81,16 +100,35 @@
                 <td>
                     <p href="" class="btn btn-secondary">Finished</p>
                 </td>
+                @if(empty($cp->rating))
+                <td>
+                    <form action="{{ route('rating') }}" method="get">
+                        @csrf
+                        <input type="hidden" value="{{ $cp->id }}" name="id">
+                        <input type="hidden" value="{{ 'cuciselimut' }}" name="type">
+                        <button class="btn btn-primary">Rate</button>
+                    </form>
+                </td>
+                @else
+                <td>
+                    <p href="" class="btn btn-secondary">Done</p>
+                </td>
+                @endif
                 @elseif(is_null($cp -> status))
                 <td>
                     <p href="" class="btn btn-success">No Status</p>
                 </td>
+                <td>
+                    <p href="" class="btn btn-secondary">Rate</p>
+                </td>
                 @else
                 <td>
                     <p href="" class="btn btn-success">{{$cp -> status}}</p>
+                <td>
+                    <p href="" class="btn btn-secondary">Rate</p>
+                </td>
                 </td>
                 @endif
-                <td><a href="" class="btn btn-primary">score</a></td>
             </tr>
             @endif
             @endforeach
@@ -126,22 +164,53 @@
                 <td>
                     <p href="" class="btn btn-secondary">Finished</p>
                 </td>
+                @if(empty($cp->rating))
+                <td>
+                    <form action="{{ route('rating') }}" method="get">
+                        @csrf
+                        <input type="hidden" value="{{ $cp->id }}" name="id">
+                        <input type="hidden" value="{{ 'cuciselimut' }}" name="type">
+                        <button class="btn btn-primary">Rate</button>
+                    </form>
+                </td>
+                @else
+                <td>
+                    <p href="" class="btn btn-secondary">Done</p>
+                </td>
+                @endif
                 @elseif(is_null($cp -> status))
                 <td>
                     <p href="" class="btn btn-success">No Status</p>
                 </td>
+                <td>
+                    <p href="" class="btn btn-secondary">Rate</p>
+                </td>
                 @else
                 <td>
                     <p href="" class="btn btn-success">{{$cp -> status}}</p>
+                <td>
+                    <p href="" class="btn btn-secondary">Rate</p>
+                </td>
                 </td>
                 @endif
-                <td><a href="" class="btn btn-primary">score</a></td>
             </tr>
             @endif
             @endforeach
         </tbody>
     </table>
 
+    <form action="{{route('feedback_process')}}" method="post">
+        @csrf
+        <h4>Feedback</h4>
+        <br>
+        <textarea id="w3review" name="feedback" rows="4" cols="50">
+    </textarea>
+        <br>
+        <input type="hidden" value="{{Auth::user()->name}}" name="name">
+        <button class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <p>Layanan Pengaduan : <a class="mb-4" href="https://wa.me/6281234567890">Click Disini</a></p>
 </div>
 <!-- End of Main Content -->
 @endsection

@@ -61,6 +61,14 @@
             </li>
 
             <!-- Nav Item -->
+            <li class="nav-item {{ Nav::isRoute('list_feedback') }}">
+                <a class="nav-link" href="{{ route('list_feedback') }}">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>{{ __('Feedback List') }}</span>
+                </a>
+            </li>
+
+            <!-- Nav Item -->
             <li class="nav-item {{ Nav::isRoute('help') }}">
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
