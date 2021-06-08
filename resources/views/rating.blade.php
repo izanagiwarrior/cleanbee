@@ -1,6 +1,63 @@
 @extends('layouts.admin')
 
 @section('main-content')
+
+<style>
+    .rate {
+        height: 50px;
+        padding: 0 10px;
+        width: fit-content;
+    }
+
+    .rate:not(:checked)>input {
+        position: absolute;
+        top: -9999px;
+    }
+
+    .rate:not(:checked)>label {
+        float: right;
+        width: 1.8em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+        margin: 0 15px;
+    }
+
+    .rate:not(:checked)>label:before {
+        content: '★ ';
+    }
+
+    .rate>input:checked~label {
+        color: #ffc700;
+    }
+
+    .rate:not(:checked)>label:hover,
+    .rate:not(:checked)>label:hover~label {
+        color: #deb217;
+    }
+
+    .rate>input:checked+label:hover,
+    .rate>input:checked+label:hover~label,
+    .rate>input:checked~label:hover,
+    .rate>input:checked~label:hover~label,
+    .rate>label:hover~input:checked~label {
+        color: #c59b08;
+    }
+
+    .profile-img {
+        border-radius: 50%;
+        background-color: blue;
+        width: 150px;
+        height: 150px;
+        position: relative;
+        top: -90px;
+        left: 100px;
+        border: 5px solid #fff
+    }
+</style>
+
 <div class="container">
     <div class="row py-4">
         <div class="col">
