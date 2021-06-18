@@ -73,7 +73,7 @@ class HomeController extends Controller
             $cs->status = "Finished";
             $cs->save();
         } elseif ($cs['status'] == "Finished") {
-            $cs->status = "";
+            $cs->status = "Order Confirmed";
             $cs->save();
         }
 
@@ -104,7 +104,7 @@ class HomeController extends Controller
             $cs->status = "Finished";
             $cs->save();
         } elseif ($cs['status'] == "Finished") {
-            $cs->status = "";
+            $cs->status = "Order Confirmed";
             $cs->save();
         }
 
@@ -135,7 +135,7 @@ class HomeController extends Controller
             $cs->status = "Finished";
             $cs->save();
         } elseif ($cs['status'] == "Finished") {
-            $cs->status = "";
+            $cs->status = "Order Confirmed";
             $cs->save();
         }
 
