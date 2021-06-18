@@ -31,7 +31,11 @@
             <td>{{$cp -> catatan}}</td>
             @if($cp -> status === "Finished")
             <td>
-                <p href="" class="btn btn-secondary">Finished</p>
+                <form action="{{ route('trackingSelimut') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $cp->id }}" name="id">
+                    <button class="btn btn-success">{{$cp -> status}}</button>
+                </form>
             </td>
             @elseif(is_null($cp -> status))
             <td>
@@ -90,7 +94,11 @@
             <td>{{$cp -> catatan}}</td>
             @if($cp -> status === "Finished")
             <td>
-                <p href="" class="btn btn-secondary">Finished</p>
+                <form action="{{ route('trackingSepatu') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $cp->id }}" name="id">
+                    <button class="btn btn-success">{{$cp -> status}}</button>
+                </form>
             </td>
             @elseif(is_null($cp -> status))
             <td>
@@ -149,7 +157,11 @@
             <td>{{$cp -> catatan}}</td>
             @if($cp -> status === "Finished")
             <td>
-                <p href="" class="btn btn-secondary">Finished</p>
+                <form action="{{ route('trackingPakaian') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $cp->id }}" name="id">
+                    <button class="btn btn-success">{{$cp -> status}}</button>
+                </form>
             </td>
             @elseif(is_null($cp -> status))
             <td>

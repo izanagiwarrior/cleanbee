@@ -72,6 +72,9 @@ class HomeController extends Controller
         } elseif ($cs['status'] == "Deliver") {
             $cs->status = "Finished";
             $cs->save();
+        } elseif ($cs['status'] == "Finished") {
+            $cs->status = "";
+            $cs->save();
         }
 
         return redirect(route('orderlistAdmin'));
@@ -100,6 +103,9 @@ class HomeController extends Controller
         } elseif ($cs['status'] == "Deliver") {
             $cs->status = "Finished";
             $cs->save();
+        } elseif ($cs['status'] == "Finished") {
+            $cs->status = "";
+            $cs->save();
         }
 
         return redirect(route('orderlistAdmin'));
@@ -127,6 +133,9 @@ class HomeController extends Controller
             $cs->save();
         } elseif ($cs['status'] == "Deliver") {
             $cs->status = "Finished";
+            $cs->save();
+        } elseif ($cs['status'] == "Finished") {
+            $cs->status = "";
             $cs->save();
         }
 
